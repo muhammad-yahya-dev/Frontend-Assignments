@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home"><i class="fas fa-graduation-cap"></i>
+      <!-- <img src="/pictures/icons8-education-80.png" alt="" width="30" height="24" class="d-inline-block align-text-top"> -->
+                EduLearn</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#categories">Categories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#extras">Extras</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Slider -->
+    <section id="home" class="mt-48 pt-8">
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/pictures/michael-marsh-U0dBV_QeiYk-unsplash.jpg" class="d-block w-100" alt="Slide 1" style="filter: brightness(0.7);">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1 class="display-4 fw-bold">Start Learning Today</h1>
+                        <p>Unlock your potential with our modern courses.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/pictures/kenny-eliason-1-aA2Fadydc-unsplash.jpg" class="d-block w-100" alt="Slide 2" style="filter: brightness(0.7);">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1 class="display-4 fw-bold">Start Learning Today</h1>
+                        <p>Explore endless possibilities.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/pictures/joss-broward-ev3Xqhr_0pI-unsplash.jpg" class="d-block w-100" alt="Slide 2" style="filter: brightness(0.7);">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1 class="display-4 fw-bold">Start Learning Today</h1>
+                        <p>Unlock your potential with our modern courses.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/pictures/pang-yuhao-_kd5cxwZOK4-unsplash.jpg" class="d-block w-100" alt="Slide 2" style="filter: brightness(0.7);">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1 class="display-4 fw-bold">Start Learning Today</h1>
+                        <p>Explore endless possibilities.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses">
+        <div class="container">
+        <h2 class="text-center mb-4 text-white"><i class="fas fa-book"></i> Our Courses</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card pricing-card">
+                    <img src="/pictures/webdeloment.jpg" class="card-img-top" alt="Web Development">
+                    <div class="card-body">
+                        <h5 class="card-title">Web Development</h5>
+                        <p class="card-text">Instructor: John Doe</p>
+                        <p class="card-text fw-bold">$99</p>
+                        <button class="btn btn-primary enroll-btn">Enroll Now</button>
+                        <button class="btn btn-secondary details-btn ms-2">Details</button>
+                        <div class="course-details mt-2">Learn HTML, CSS, and JavaScript to build websites.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card pricing-card">
+                    <img src="/pictures/grifcdigine.jpg" class="card-img-top" alt="Graphic Design">
+                    <div class="card-body">
+                        <h5 class="card-title">Graphic Design</h5>
+                        <p class="card-text">Instructor: Jane Smith</p>
+                        <p class="card-text fw-bold">$79</p>
+                        <button class="btn btn-primary enroll-btn">Enroll Now</button>
+                        <button class="btn btn-secondary details-btn ms-2">Details</button>
+                        <div class="course-details mt-2">Master tools like Photoshop and Illustrator.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card pricing-card">
+                    <img src="/pictures/degital markiting.jpg" class="card-img-top" alt="Digital Marketing">
+                    <div class="card-body">
+                        <h5 class="card-title">Digital Marketing</h5>
+                        <p class="card-text">Instructor: Alex Johnson</p>
+                        <p class="card-text fw-bold">$89</p>
+                        <button class="btn btn-primary enroll-btn">Enroll Now</button>
+                        <button class="btn btn-secondary details-btn ms-2">Details</button>
+                        <div class="course-details mt-2">Learn SEO, social media, and ads.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card pricing-card">
+                    <img src="/pictures/unseen-studio-s9CC2SKySJM-unsplash.jpg" class="card-img-top" alt="Python Programming">
+                    <div class="card-body">
+                        <h5 class="card-title">Python Programming</h5>
+                        <p class="card-text">Instructor: Bob Lee</p>
+                        <p class="card-text fw-bold">$109</p>
+                        <button class="btn btn-primary enroll-btn">Enroll Now</button>
+                        <button class="btn btn-secondary details-btn ms-2">Details</button>
+                        <div class="course-details mt-2">From basics to advanced Python.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card pricing-card">
+                    <img src="/pictures/pexels-hikaique-243757.jpg" class="card-img-top" alt="Photography">
+                    <div class="card-body">
+                        <h5 class="card-title">Photography</h5>
+                        <p class="card-text">Instructor: Emma Wilson</p>
+                        <p class="card-text fw-bold">$69</p>
+                        <button class="btn btn-primary enroll-btn">Enroll Now</button>
+                        <button class="btn btn-secondary details-btn ms-2">Details</button>
+                        <div class="course-details mt-2">Capture stunning photos with any camera.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card pricing-card">
+                    <img src="/pictures/pexels-goumbik-590041.jpg" class="card-img-top" alt="Data Analysis">
+                    <div class="card-body">
+                        <h5 class="card-title">Data Analysis</h5>
+                        <p class="card-text">Instructor: Chris Brown</p>
+                        <p class="card-text fw-bold">$119</p>
+                        <button class="btn btn-primary enroll-btn">Enroll Now</button>
+                        <button class="btn btn-secondary details-btn ms-2">Details</button>
+                        <div class="course-details mt-2">Analyze data with Excel and Python.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <button class="btn btn-success" id="changeColorBtn">Change Card Colors</button>
+        </div>
+    </div>
+    </section>
+    <!-- Categories Section -->
+    <section id="categories" class="container-fluid py-5">
+    <div class="container">
+        <h2 class="text-center mb-5 modern-title">
+            <span>Our Categories</span>
+        </h2>
+        
+        <div class="row g-4"> <div class="col-lg-3 col-md-6">
+                <div class="modern-card">
+                    <div class="icon-box tech">
+                        <!-- <i class="fas fa-cogs"></i> -->
+                        <i class="fas fa-cogs fa-2x mb-2"></i>
+                    </div>
+                    <h5>Technology</h5>
+                    <p>Learn Coding & AI</p>
+                    <div class="card-arrow"><i class="fas fa-chevron-right"></i></div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="modern-card">
+                    <div class="icon-box business">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h5>Business</h5>
+                    <p>Marketing & Sales</p>
+                    <div class="card-arrow"><i class="fas fa-chevron-right"></i></div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="modern-card">
+                    <div class="icon-box art">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h5>Art & Design</h5>
+                    <p>UI/UX & Graphics</p>
+                    <div class="card-arrow"><i class="fas fa-chevron-right"></i></div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="modern-card">
+                    <div class="icon-box life">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h5>Lifestyle</h5>
+                    <p>Health & Fitness</p>
+                    <div class="card-arrow"><i class="fas fa-chevron-right"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+      
+       <section id="contact" class="container-fluid py-5" style="background: #0f172a;">
+    <div class="container">
+        <h2 class="text-center mb-5 text-white fw-bold modern-title">
+            <span><i class="fas fa-envelope me-2"></i>Contact Us</span>
+        </h2>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form id="contactForm" class="p-4 contact-card">
+                    <div class="mb-4">
+                        <label for="name" class="form-label text-light">Full Name</label>
+                        <input type="text" class="form-control modern-input" id="name" placeholder="Your Name" required>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="email" class="form-label text-light">Email Address</label>
+                        <input type="email" class="form-control modern-input" id="email" placeholder="name@example.com" required>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="course" class="form-label text-light">Course Interested</label>
+                        <select class="form-select modern-input" id="course">
+                            <option selected disabled>Choose a course...</option>
+                            <option>Web Development</option>
+                            <option>Graphic Design</option>
+                            <option>Digital Marketing</option>
+                            <option>Python Programming</option>
+                            <option>Photography</option>
+                            <option>Data Analysis</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="message" class="form-label text-light">Message</label>
+                        <textarea class="form-control modern-input" id="message" rows="4" placeholder="How can we help you?"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-gradient w-100 py-3 fw-bold">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- extra section -->
+
+<section id="extras" class="container-fluid py-5" style="background: #111827;">
+    <div class="container">
+        <h2 class="text-center mb-5 text-white fw-bold"><i class="fas fa-star text-warning me-2"></i>Interactive Features</h2>
+        
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="modern-card p-4 h-100">
+                    <h5 class="text-info"><i class="fas fa-eye me-2"></i>Toggle Content</h5>
+                    <p id="paragraph" class="mt-3 text-light">This is a smart paragraph. You can hide or show it smoothly using the button below Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis reprehenderit laudantium quasi corporis aliquid, harum et, ad dolorem officia ipsam autem quibusdam voluptatum! Dolores exercitationem nemo praesentium, iure est sapiente Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae repudiandae officia, animi id tempore quis dignissimos rerum, numquam quod fuga ex molestias corporis consequuntur dolores doloremque porro. Molestiae temporibus vero nemo cumque consequatur enim voluptatem facere nulla aliquid quae eum id voluptas, laboriosam quibusdam atque sit perspiciatis iure at totam, laborum officiis modi. Expedita qui, aspernatur minima minus sequi mollitia vitae adipisci est temporibus eius magni laboriosam excepturi natus dicta quod quidem possimus provident ratione in maiores nam atque sapiente praesentium? Error obcaecati suscipit iusto dolorum modi iure recusandae provident. Minus, architecto est? Rem, delectus vero quam sit possimus ad excepturi nulla deleniti quo consequatur adipisci.</p>
+                    <button class="btn btn-outline-info mt-auto" id="toggleBtn">Toggle Paragraph</button>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="modern-card p-4 h-100 text-center">
+                    <h5 class="text-warning mb-3"><i class="fas fa-image me-2"></i>Image Animation</h5>
+                    <div style="overflow: hidden; border-radius: 12px;">
+                        <img id="slideImage" src="/pictures/michael-marsh-U0dBV_QeiYk-unsplash.jpg" class="img-fluid rounded" alt="Slide Image">
+                    </div>
+                    <button class="btn btn-warning mt-3 w-100" id="slideBtn">Slide Toggle Image</button>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="modern-card p-4 h-100">
+                    <h5 class="text-success"><i class="fas fa-bell me-2"></i>Notifications</h5>
+                    <div class="alert alert-success mt-3" id="customAlert" style="display: none; border: none; background: rgba(25, 135, 84, 0.2); color: #75ec9c;">
+                        <i class="fas fa-check-circle me-2"></i> Magic! This alert appeared with a FadeIn effect.
+                    </div>
+                    <button class="btn btn-success mt-2" id="showAlertBtn">Trigger Alert</button>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="modern-card p-4 h-100">
+                    <h5 class="text-primary"><i class="fas fa-list-ul me-2"></i>Dynamic List Builder</h5>
+                    <ul id="itemList" class="list-group list-group-flush mt-3 mb-3">
+                        <li class="list-group-item bg-transparent text-light border-secondary">✨ Initial Item 1</li>
+                    </ul>
+                    <button class="btn btn-primary" id="addItemBtn">Add New Item</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- footer -->
+ <footer class="modern-footer text-white text-center py-5">
+    <div class="container">
+        <h3 class="footer-logo mb-3">Edu<span>Learn</span></h3>
+        
+        <div class="social-links mb-4">
+            <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-btn twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        
+        <hr class="footer-divider mb-4">
+        
+        <p class="mb-0 copyright-text">&copy; 2025 <strong>EduLearn</strong>. All rights reserved. Designed with ❤️</p>
+    </div>
+</footer>
+
+
+    <script src="script.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1e1e24, #3a4452);
+            padding: 20px;
+        }
+
+        .calculator {
+            width: 100%;
+            max-width: 360px; 
+            background: #17181c;
+            padding: 25px;
+            border-radius: 24px;
+            box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .screen-container {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            border: none;
+            outline: none;
+            padding: 15px;
+            background: transparent;
+            color: #ffffff;
+            font-size: 42px;
+            text-align: right;
+            font-weight: 300;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        button {
+            border: none;
+            outline: none;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: #22242c;
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background: #2c2f3a;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(1px);
+            box-shadow: none;
+        }
+
+        .operator {
+            color: #26ffd8;
+            background: #1e292b;
+        }
+        
+        .operator:hover {
+            background: #283b3e;
+        }
+
+        .equalbtn {
+            background: #fb7c14;
+            color: #ffffff;
+        }
+
+        .equalbtn:hover {
+            background: #ff9133;
+        }
+
+        @media (max-width: 380px) {
+            .calculator {
+                padding: 15px;
+            }
+            button {
+                width: 55px;
+                height: 55px;
+                font-size: 18px;
+            }
+            input {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <div class="screen-container">
+            <input type="text" placeholder="0" id="inputbox" readonly>
+        </div>
+        
+        <div class="button-row">
+            <button class="operator">AC</button>
+            <button class="operator">DEL</button>
+            <button class="operator">%</button>
+            <button class="operator">/</button>
+        </div>
+        <div class="button-row">
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button class="operator">*</button>
+        </div>
+        <div class="button-row">
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button class="operator">-</button>
+        </div>
+        <div class="button-row">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button class="operator">+</button>
+        </div>
+        <div class="button-row">
+            <button>00</button>
+            <button>0</button>
+            <button>.</button>
+            <button class="equalbtn">=</button>
+        </div>
+    </div>
+
+    <script>
+        let inputbox = document.getElementById("inputbox");
+        let buttons = document.querySelectorAll("button");
+        let string = "";
+        
+        buttons.forEach(button => {
+            button.addEventListener("click", (e) => {
+                let buttonText = e.target.innerHTML;
+
+                if (buttonText == "=") {
+                    try {
+                        if(string !== "") {
+                            string = eval(string).toString();
+                            inputbox.value = string;
+                        }
+                    } catch (error) {
+                        inputbox.value = "Error";
+                        string = "";
+                    }
+                } 
+                else if (buttonText == "AC") {
+                    string = "";
+                    inputbox.value = "";
+                } 
+                else if (buttonText == "DEL") {
+                    string = string.slice(0, -1);
+                    inputbox.value = string;
+                } 
+                else {
+                    string += buttonText;
+                    inputbox.value = string;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
