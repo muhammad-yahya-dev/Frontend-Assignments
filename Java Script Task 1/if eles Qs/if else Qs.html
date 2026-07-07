@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>If-Else Conditional Logic App</title>
+    <link rel="stylesheet" href="if else Qs.css">
+    <script src="if else Qs.js"></script>
+</head>
+<body>
+
+    <div class="container-main">
+        <h1 class="text-center">
+            Conditional Logic (If/Else Statements)
+        </h1>
+
+        <div class="grid-layout">
+
+            <!-- 1. Even or Odd Check -->
+            <div class="card">
+                <h2 class="heading text-blue-600">1.(Even/Odd)</h2>
+                <p class="subtext">operator (`%`)</p>
+                <input type="number" id="num-even-odd" placeholder="Enter a number" class="input-field">
+                <button onclick="checkEvenOdd()" class="btn btn-blue">
+                    Check Parity
+                </button>
+                <div id="result-even-odd" class="result-box"></div>
+            </div>
+
+            <!-- 2. Voting Eligibility Check -->
+            <div class="card">
+                <h2 class="heading text-green-600">2. Voting Eligibility Check</h2>
+                <p class="subtext">Checks if age is 18 or older.</p>
+                <input type="number" id="age-voting" placeholder="Enter age" class="input-field">
+                <button onclick="checkVotingEligibility()" class="btn btn-green">
+                    Check Eligibility
+                </button>
+                <div id="result-voting" class="result-box"></div>
+            </div>
+
+            <!-- 3. Positive, Negative, or Zero Check -->
+            <div class="card">
+                <h2 class="heading text-yellow-600">3.Positive, Negative, or Zero</h2>
+                <p class="subtext">`if`, `else if`, aur `else` ka upyog.</p>
+                <input type="number" id="num-sign" placeholder="Enter a number" class="input-field">
+                <button onclick="checkSign()" class="btn btn-yellow">
+                    Determine Sign
+                </button>
+                <div id="result-sign" class="result-box"></div>
+            </div>
+
+            <!-- 4. Largest of Three Numbers -->
+            <div class="card">
+                <h2 class="heading text-red-600">4.Largest of Three Numbers</h2>
+                <p class="subtext">Compares three numbers (logical AND `&&`).</p>
+                <div class="space-y-2 mb-4">
+                    <input type="number" id="num-a" placeholder="Number A" class="input-field mb-0">
+                    <input type="number" id="num-b" placeholder="Number B" class="input-field mb-0">
+                    <input type="number" id="num-c" placeholder="Number C" class="input-field mb-0">
+                </div>
+                <button onclick="checkLargestThree()" class="btn btn-red">
+                    Find Largest
+                </button>
+                <div id="result-largest" class="result-box"></div>
+            </div>
+
+            <!-- 5. Leap Year Check -->
+            <div class="card">
+                <h2 class="heading text-purple-600">5.  Leap Year Check</h2>
+                <p class="subtext">Complex logic: Divisible by 4, but if divisible by 100 then must also be divisible by 400.</p>
+                <input type="number" id="year-leap" placeholder="Enter a year (e.g., 2024)" class="input-field">
+                <button onclick="checkLeapYear()" class="btn btn-purple">
+                    Check Leap Year
+                </button>
+                <div id="result-leap-year" class="result-box"></div>
+            </div>
+
+            <!-- 6. Loan Eligibility Check -->
+            <div class="card">
+                <h2 class="heading text-indigo-600">6. Loan Eligibility Check</h2>
+                <p class="subtext">Multiple conditions must be met (AND logic).</p>
+                <div class="space-y-2 mb-4">
+                    <input type="number" id="salary" placeholder="Annual Salary" class="input-field mb-0">
+                    <input type="number" id="age-loan" placeholder="Age" class="input-field mb-0">
+                    <input type="number" id="credit-score" placeholder="Credit Score" class="input-field mb-0">
+                </div>
+                <button onclick="checkLoanEligibility()" class="btn btn-indigo">
+                    Check Loan Eligibility
+                </button>
+                <div id="result-loan-eligibility" class="result-box"></div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
