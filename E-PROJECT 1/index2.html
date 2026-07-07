@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metric Converters - Charts & Currency</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Background Blobs (Blue Theme) -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+
+    <header>
+
+        <!-- NAVBAR -->
+         
+        <div class="header-container">
+            <!-- REMOVED: Text "Converters", ADDED: Logo Image -->
+            <a href="javascript:void(0)" class="logo" onclick="navigateTo('home')">
+                <img style="height: 100px; width: 200px;" src="IMAGES/1.png" alt="Metric Conversion Icon" class="logo-icon">
+            </a>
+            <nav>
+                <ul>
+                    <li><a onclick="navigateTo('home')" id="nav-home" class="active">Home</a></li>
+                    <li><a onclick="navigateTo('converter')" id="nav-converter">Converters</a></li>
+                    <li><a onclick="navigateTo('chart')" id="nav-chart">Charts</a></li>
+                    <li><a onclick="navigateTo('apps')" id="nav-apps">Apps</a></li>
+                    <li><a onclick="navigateTo('faq')" id="nav-faq">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HOME SECTION -->
+        <section id="home" class="active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Metric Conversion Charts & Calculators</h1>
+                    <p>Science projects are more authoritative with metric units. Use our professional tools for seamless conversions.</p>
+                    <div style="margin-top: 2rem;">
+                        <select onchange="handleHomeSelectChange(this.value)">
+                            <option value="">-- Choose Type --</option>
+                            <option value="Temperature">Temperature</option>
+                            <option value="Length">Length</option>
+                            <option value="Area">Area</option>
+                            <option value="Volume">Volume</option>
+                            <option value="Mass">Weight</option>
+                            <option value="Speed">Speed</option>
+                            <option value="Time">Time</option>
+                            <option value="Angle">Angle</option>
+                            <option value="Pressure">Pressure</option>
+                            <option value="Currency">Currency</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="grid-menu">
+                <div class="grid-item" onclick="setConverterType('Temperature'); navigateTo('converter')"><div class="icon-badge" style="background:var(--c-temp)">🌡️</div><h3>Temperature</h3></div>
+                <div class="grid-item" onclick="setConverterType('Length'); navigateTo('converter')"><div class="icon-badge" style="background:var(--c-len)">📏</div><h3>Length</h3></div>
+                <div class="grid-item" onclick="setConverterType('Area'); navigateTo('converter')"><div class="icon-badge" style="background:var(--c-area)">🟦</div><h3>Area</h3></div>
+                <div class="grid-item" onclick="setConverterType('Volume'); navigateTo('converter')"><div class="icon-badge" style="background:var(--c-vol)">🧊</div><h3>Volume</h3></div>
+                <div class="grid-item" onclick="setConverterType('Mass'); navigateTo('converter')"><div class="icon-badge" style="background:var(--c-mass)">⚖️</div><h3>Weight</h3></div>
+                <div class="grid-item" onclick="setConverterType('Speed'); navigateTo('converter')"><div class="icon-badge" style="background:var(--c-speed)">🚀</div><h3>Speed</h3></div>
+                <div class="grid-item" onclick="setConverterType('Time'); navigateTo('converter')"><div class="icon-badge" style="background:var(--c-time)">⏱️</div><h3>Time</h3></div>
+                <div class="grid-item" onclick="setConverterType('Angle'); navigateTo('converter')"><div class="icon-badge" style="background:var(--c-angle)">📐</div><h3>Angle</h3></div>
+                <div class="grid-item" onclick="setConverterType('Pressure'); navigateTo('converter')"><div class="icon-badge" style="background:var(--c-pressure)">🌫</div><h3>Pressure</h3></div>
+                <div class="grid-item" onclick="setConverterType('Energy'); navigateTo('converter')"><div class="icon-badge" style="background:var(--c-energy)">⚡</div><h3>Energy</h3></div>
+                <div class="grid-item" onclick="setConverterType('Currency'); navigateTo('converter')"><div class="icon-badge" style="background:var(--c-currency)">💵</div><h3>Currency</h3></div>
+                <div class="grid-item" onclick="navigateTo('apps')"><div class="icon-badge" style="background:var(--nav-gradient)">📱</div><h3>Mobile App</h3></div>
+                <div class="grid-item" onclick="navigateTo('chart')"><div class="icon-badge" style="background:var(--c-charts)">📊</div><h3>Tables</h3></div>
+            </div>
+
+            <!-- ADDED: CHARTS CONTENT COPIED TO HOME PAGE -->
+            <div class="charts-container" style="margin-top: 4rem;">
+                <div class="charts-header">
+                    <h2>Metric Conversion Tables</h2>
+                </div>
+                <div class="chart-search-wrapper">
+                    <span class="chart-search-icon">🔍</span>
+                    <!-- ID changed to chart-search-home to not conflict with dedicated page -->
+                    <input type="text" id="chart-search-home" class="chart-search-input" placeholder="Search for units..." onkeyup="filterChartsHome()">
+                </div>
+                <!-- ID changed to charts-container-home -->
+                <div class="charts-grid" id="charts-container-home"></div>
+            </div>
+            <!-- END OF CHARTS CONTENT ON HOME -->
+
+            <!-- START: APPS PAGE CONTENT COPIED TO HOME PAGE -->
+            <div class="apps-container" style="margin-top: 5rem;">
+                <div class="app-hero">
+                    <h2>Convert on the Go</h2>
+                    <p>Experience full power of our metric conversion tools right in your pocket. Engineered for precision and speed.</p>
+                </div>
+                <div class="app-showcase">
+                    
+                    <!-- iOS Row -->
+                    <div class="app-showcase-row">
+                        <div class="app-content">
+                            <div class="app-title">iOS App</div>
+                            <h2 class="app-subtitle">Beautifully Crafted<br>for iPhone</h2>
+                            <p class="app-desc">Designed specifically for iPhone and iPad with a fluid interface that matches your device's aesthetics.</p>
+                            <ul class="app-features">
+                                <li><span>✓</span> Native Dark Mode</li>
+                                <li><span>✓</span> Widgets for Home Screen</li>
+                                <li><span>✓</span> iCloud History Sync</li>
+                                <li><span>✓</span> Haptic Feedback</li>
+                            </ul>
+                            <!-- FIXED: Added href="javascript:void(0)" -->
+                            <a href="javascript:void(0)" onclick="navigateTo('app-ios')" class="btn-primary">View Features</a>
+                        </div>
+                        <div class="phone-mockup">
+                            <div class="phone-frame">
+                                <div class="phone-notch"></div>
+                                <div class="phone-screen">
+                                    <div class="phone-status-bar"><span>9:41</span><span>5G</span></div>
+                                    <div class="phone-app-header">
+                                        <div class="phone-avatar"></div>
+                                        <div style="flex:1; margin:0 10px; height:8px; background:#eee; border-radius:4px;"></div>
+                                        <div class="phone-menu"></div>
+                                    </div>
+                                    <div class="phone-body">
+                                        <div class="ui-card">
+                                            <div class="ui-label">Length</div>
+                                            <div class="ui-input" style="width:60%; display:flex; align-items:center; padding-left:10px; font-weight:700;">100</div>
+                                            <div class="ui-graph-container">
+                                                <div class="ui-bar" style="height: 40%;"></div>
+                                                <div class="ui-bar" style="height: 70%;"></div>
+                                                <div class="ui-bar" style="height: 30%;"></div>
+                                                <div class="ui-bar" style="height: 80%;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="ui-card" style="margin-top:auto; text-align:center; padding:20px;">
+                                            <div class="ui-result">109.36</div>
+                                            <div class="ui-label">Yards</div>
+                                        </div>
+                                    </div>
+                                    <div class="phone-fab">→</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Android Row -->
+                    <div class="app-showcase-row" style="flex-direction:row-reverse;">
+                        <div class="app-content">
+                            <div class="app-title">Android App</div>
+                            <h2 class="app-subtitle">Power & Precision<br>Material You</h2>
+                            <p class="app-desc">The ultimate tool for engineers and scientists. Full Material Design with advanced features.</p>
+                            <ul class="app-features">
+                                <li><span>✓</span> Smart Voice Input</li>
+                                <li><span>✓</span> Live Currency Rates</li>
+                                <li><span>✓</span> High Precision Mode</li>
+                                <li><span>✓</span> Wear OS Support</li>
+                            </ul>
+                            <!-- MODIFIED BUTTON: Now triggers download -->
+                            <a href="javascript:void(0)" onclick="triggerDownload('android')" class="btn-primary" style="background: var(--c-mass); box-shadow: 0 8px 20px rgba(0, 86, 179, 0.3);">Download Now</a>
+                        </div>
+                        <div class="phone-mockup">
+                            <div class="phone-frame">
+                                <div class="phone-notch"></div>
+                                <div class="phone-screen">
+                                    <div class="phone-status-bar"><span>12:45</span><span>WiFi</span></div>
+                                    <div class="phone-app-header">
+                                        <div style="font-size:1.2rem; color:#0056b3;">Convert</div>
+                                        <div class="phone-menu"></div>
+                                    </div>
+                                    <div class="phone-body">
+                                        <div class="ui-card">
+                                            <div class="ui-label">Weight</div>
+                                            <div class="ui-input" style="width:50%; display:flex; align-items:center; padding-left:10px; font-weight:700;">1.2</div>
+                                            <div style="font-size:0.7rem; color:#999; margin-top:2px;">Pounds (lb)</div>
+                                        </div>
+                                        <div class="ui-card" style="margin-top:15px; text-align:center; padding:25px 0;">
+                                            <div class="ui-result">0.54</div>
+                                            <div class="ui-label">Kilograms (kg)</div>
+                                        </div>
+                                        <div style="flex:1;"></div> <!-- Spacer -->
+                                        <div style="display:flex; justify-content:center;">
+                                            <div style="width:40px; height:4px; background:#ddd; border-radius:2px;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="phone-fab">➜</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END: APPS PAGE CONTENT COPIED TO HOME PAGE -->
+
+            <!-- START: FAQ PAGE CONTENT COPIED TO HOME PAGE -->
+            <div style="margin-top: 5rem;">
+                <div style="text-align:center; padding:5rem 2rem; border-radius:24px; background:var(--c-faq-hero); position:relative; overflow:hidden; margin-bottom:3rem; color:white; box-shadow:0 20px 50px rgba(0,0,0,0.2);">
+                    <h1 style="color:white; position:relative; z-index:2; font-size:2.5rem; text-shadow:0 4px 10px rgba(0,0,0,0.2);">Frequently Asked Questions</h1>
+                    <p style="position:relative; z-index:2; max-width:600px; margin:0 auto; opacity:0.9;">Find answers to common questions.</p>
+                </div>
+                <!-- CHANGED: Increased max-width to 1400px and changed display to grid to cover left/right sides -->
+                <div style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 1.5rem;" id="faq-list-home">
+                     
+                     <!-- FAQ 1 -->
+                     <div class="faq-card">
+                        <div class="faq-header" onclick="toggleFaq(this)">
+                             <div class="faq-icon">🎯</div>
+                             <div style="flex:1;"><h3 style="font-size:1.15rem; font-weight:700; color:#2c3e50; margin:0; background:-webkit-linear-gradient(45deg, #2c3e50, #576574); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">How accurate are conversion results?</h3></div>
+                             <div class="faq-toggle">+</div>
+                        </div>
+                        <div class="faq-body">
+                            <p>Our tools use standard international definitions for conversions (e.g., 1 inch = 2.54 cm exactly). For currency, we use live market rates updated hourly. Scientific conversions are precise up to decimal places displayed.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-card">
+                        <div class="faq-header" onclick="toggleFaq(this)">
+                             <div class="faq-icon">📶</div>
+                             <div style="flex:1;"><h3 style="font-size:1.15rem; font-weight:700; color:#2c3e50; margin:0; background:-webkit-linear-gradient(45deg, #2c3e50, #576574); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Do I need an internet connection to use website?</h3></div>
+                             <div class="faq-toggle">+</div>
+                        </div>
+                        <div class="faq-body">
+                            <p>No! Once the page is loaded, all metric and standard unit conversions happen locally in your browser using JavaScript. You do not need an active internet connection for calculations, only for fetching live currency rates initially.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-card">
+                        <div class="faq-header" onclick="toggleFaq(this)">
+                             <div class="faq-icon">⚓</div>
+                             <div style="flex:1;"><h3 style="font-size:1.15rem; font-weight:700; color:#2c3e50; margin:0; background:-webkit-linear-gradient(45deg, #2c3e50, #576574); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">What is a knot? What is a nautical mile?</h3></div>
+                             <div class="faq-toggle">+</div>
+                        </div>
+                        <div class="faq-body">
+                            <p>A <strong>knot</strong> is one nautical mile per hour. One nautical mile is defined as exactly 1,852 meters. It is primarily used for air and marine navigation.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-card">
+                        <div class="faq-header" onclick="toggleFaq(this)">
+                             <div class="faq-icon">💰</div>
+                             <div style="flex:1;"><h3 style="font-size:1.15rem; font-weight:700; color:#2c3e50; margin:0; background:-webkit-linear-gradient(45deg, #2c3e50, #576574); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">How often are currency exchange rates updated?</h3></div>
+                             <div class="faq-toggle">+</div>
+                        </div>
+                        <div class="faq-body">
+                            <p>Our currency exchange rates are sourced from major financial markets and are updated automatically every hour to ensure you get the most current conversion possible.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="faq-card">
+                        <div class="faq-header" onclick="toggleFaq(this)">
+                             <div class="faq-icon">📱</div>
+                             <div style="flex:1;"><h3 style="font-size:1.15rem; font-weight:700; color:#2c3e50; margin:0; background:-webkit-linear-gradient(45deg, #2c3e50, #576574); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Can I use this website on my mobile phone?</h3></div>
+                             <div class="faq-toggle">+</div>
+                        </div>
+                        <div class="faq-body">
+                            <p>Yes! The website is fully responsive and optimized for smartphones and tablets. We also offer dedicated native apps for both iOS and Android for a smoother offline experience.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 6 -->
+                    <div class="faq-card">
+                        <div class="faq-header" onclick="toggleFaq(this)">
+                             <div class="faq-icon">🔐</div>
+                             <div style="flex:1;"><h3 style="font-size:1.15rem; font-weight:700; color:#2c3e50; margin:0; background:-webkit-linear-gradient(45deg, #2c3e50, #576574); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Is my data private?</h3></div>
+                             <div class="faq-toggle">+</div>
+                        </div>
+                        <div class="faq-body">
+                            <p>Absolutely. All conversions are performed locally in your browser. We do not store, track, or transmit the numbers you input to any external servers. Your privacy is our priority.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 7 -->
+                    <div class="faq-card">
+                        <div class="faq-header" onclick="toggleFaq(this)">
+                             <div class="faq-icon">🌡️</div>
+                             <div style="flex:1;"><h3 style="font-size:1.15rem; font-weight:700; color:#2c3e50; margin:0; background:-webkit-linear-gradient(45deg, #2c3e50, #576574); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">How do I convert Celsius to Fahrenheit manually?</h3></div>
+                             <div class="faq-toggle">+</div>
+                        </div>
+                        <div class="faq-body">
+                            <p>The formula is: <strong>(°C × 9/5) + 32 = °F</strong>. To convert from Fahrenheit to Celsius, subtract 32 and multiply by 5/9: <strong>(°F - 32) × 5/9 = °C</strong>.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 8 -->
+                    <div class="faq-card">
+                        <div class="faq-header" onclick="toggleFaq(this)">
+                             <div class="faq-icon">⚖️</div>
+                             <div style="flex:1;"><h3 style="font-size:1.15rem; font-weight:700; color:#2c3e50; margin:0; background:-webkit-linear-gradient(45deg, #2c3e50, #576574); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Is the mobile app free?</h3></div>
+                             <div class="faq-toggle">+</div>
+                        </div>
+                        <div class="faq-body">
+                            <p>Yes! Our mobile applications for both iOS and Android are free to download and use. We offer a premium ad-free version for users who want to support development.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 9 -->
+                    <div class="faq-card">
+                        <div class="faq-header" onclick="toggleFaq(this)">
+                             <div class="faq-icon">🖨️</div>
+                             <div style="flex:1;"><h3 style="font-size:1.15rem; font-weight:700; color:#2c3e50; margin:0; background:-webkit-linear-gradient(45deg, #2c3e50, #576574); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Can I print conversion tables?</h3></div>
+                             <div class="faq-toggle">+</div>
+                        </div>
+                        <div class="faq-body">
+                            <p>Yes. You can use your browser's "Print" function (Ctrl+P or Cmd+P) to print any of our conversion tables or charts directly to PDF or paper for offline reference.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 10 -->
+                    <div class="faq-card">
+                        <div class="faq-header" onclick="toggleFaq(this)">
+                             <div class="faq-icon">🛠️</div>
+                             <div style="flex:1;"><h3 style="font-size:1.15rem; font-weight:700; color:#2c3e50; margin:0; background:-webkit-linear-gradient(45deg, #2c3e50, #576574); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">How do I report a bug or request a feature?</h3></div>
+                             <div class="faq-toggle">+</div>
+                        </div>
+                        <div class="faq-body">
+                            <p>We love feedback! You can contact our support team directly through the "Contact Support" link in the footer, or message us on our social media channels found below.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- END: FAQ PAGE CONTENT COPIED TO HOME PAGE -->
+
+        </section>
+
+        <!-- CONVERTER SECTION -->
+        <section id="converter">
+            <div class="converter-wrapper">
+                <div class="converter-header">
+                    <h2 id="conv-title">Metric Converter</h2>
+                    <p style="color: #7f8c8d; font-weight: 500; margin-top:0.5rem">Select units to convert between and enter a value.</p>
+                </div>
+                <div style="margin: 0 auto 2.5rem; position: relative; z-index: 10; text-align:center;">
+                    <select id="converter-type-select" class="category-select" onchange="handleConverterTypeChange(this.value)">
+                        <option value="">-- Choose Type --</option>
+                        <option value="Temperature">Temperature</option>
+                        <option value="Length">Length</option>
+                        <option value="Area">Area</option>
+                        <option value="Volume">Volume</option>
+                        <option value="Mass">Weight</option>
+                        <option value="Speed">Speed</option>
+                        <option value="Time">Time</option>
+                        <option value="Angle">Angle</option>
+                        <option value="Pressure">Pressure</option>
+                        <option value="Energy">Energy</option>
+                        <option value="Currency">Currency</option>
+                    </select>
+                </div>
+                <div class="converter-controls">
+                    <div class="input-group">
+                        <span class="floating-label">From</span>
+                        <!-- FIXED: Removed placeholder from number input -->
+                        <input type="number" id="input-from" class="modern-input" oninput="performConversion('forward')">
+                        <select id="unit-from" class="modern-select" onchange="performConversion('forward')"></select>
+                    </div>
+                    <div class="equals-circle">=</div>
+                    <div class="input-group">
+                        <span class="floating-label">To</span>
+                        <!-- FIXED: Removed placeholder from number input -->
+                        <input type="number" id="input-to" class="modern-input" oninput="performConversion('backward')">
+                        <select id="unit-to" class="modern-select" onchange="performConversion('forward')"></select>
+                    </div>
+                </div>
+                <div style="display:flex; justify-content:center; margin-top: 3rem;">
+                    <div id="conversion-result" class="result-container">
+                        <div class="result-value" id="result-text">0</div>
+                        <div class="result-label" id="result-unit">Result</div>
+                    </div>
+                </div>
+                <div style="margin-top: 2rem; text-align: center;">
+                    <button onclick="navigateTo('home')" style="padding: 12px 30px; border: none; border-radius: 50px; cursor: pointer; font-weight: 700; background: rgba(0,0,0,0.05); color: #555;">Back to Home</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- APPS SECTION (ADVANCED HUB) -->
+        <section id="apps">
+            <div class="apps-container">
+                <div class="app-hero">
+                    <h2>Convert on the Go</h2>
+                    <p>Experience full power of our metric conversion tools right in your pocket. Engineered for precision and speed.</p>
+                </div>
+                <div class="app-showcase">
+                    
+                    <!-- iOS Row -->
+                    <div class="app-showcase-row">
+                        <div class="app-content">
+                            <div class="app-title">iOS App</div>
+                            <h2 class="app-subtitle">Beautifully Crafted<br>for iPhone</h2>
+                            <p class="app-desc">Designed specifically for iPhone and iPad with a fluid interface that matches your device's aesthetics.</p>
+                            <ul class="app-features">
+                                <li><span>✓</span> Native Dark Mode</li>
+                                <li><span>✓</span> Widgets for Home Screen</li>
+                                <li><span>✓</span> iCloud History Sync</li>
+                                <li><span>✓</span> Haptic Feedback</li>
+                            </ul>
+                            <!-- FIXED: Added href="javascript:void(0)" -->
+                            <a href="javascript:void(0)" onclick="navigateTo('app-ios')" class="btn-primary">View Features</a>
+                        </div>
+                        <div class="phone-mockup">
+                            <div class="phone-frame">
+                                <div class="phone-notch"></div>
+                                <div class="phone-screen">
+                                    <div class="phone-status-bar"><span>9:41</span><span>5G</span></div>
+                                    <div class="phone-app-header">
+                                        <div class="phone-avatar"></div>
+                                        <div style="flex:1; margin:0 10px; height:8px; background:#eee; border-radius:4px;"></div>
+                                        <div class="phone-menu"></div>
+                                    </div>
+                                    <div class="phone-body">
+                                        <div class="ui-card">
+                                            <div class="ui-label">Length</div>
+                                            <div class="ui-input" style="width:60%; display:flex; align-items:center; padding-left:10px; font-weight:700;">100</div>
+                                            <div class="ui-graph-container">
+                                                <div class="ui-bar" style="height: 40%;"></div>
+                                                <div class="ui-bar" style="height: 70%;"></div>
+                                                <div class="ui-bar" style="height: 30%;"></div>
+                                                <div class="ui-bar" style="height: 80%;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="ui-card" style="margin-top:auto; text-align:center; padding:20px;">
+                                            <div class="ui-result">109.36</div>
+                                            <div class="ui-label">Yards</div>
+                                        </div>
+                                    </div>
+                                    <div class="phone-fab">→</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Android Row -->
+                    <div class="app-showcase-row" style="flex-direction:row-reverse;">
+                        <div class="app-content">
+                            <div class="app-title">Android App</div>
+                            <h2 class="app-subtitle">Power & Precision<br>Material You</h2>
+                            <p class="app-desc">The ultimate tool for engineers and scientists. Full Material Design with advanced features.</p>
+                            <ul class="app-features">
+                                <li><span>✓</span> Smart Voice Input</li>
+                                <li><span>✓</span> Live Currency Rates</li>
+                                <li><span>✓</span> High Precision Mode</li>
+                                <li><span>✓</span> Wear OS Support</li>
+                            </ul>
+                            <!-- MODIFIED BUTTON: Now triggers download -->
+                            <a href="javascript:void(0)" onclick="triggerDownload('android')" class="btn-primary" style="background: var(--c-mass); box-shadow: 0 8px 20px rgba(0, 86, 179, 0.3);">Download Now</a>
+                        </div>
+                        <div class="phone-mockup">
+                            <div class="phone-frame">
+                                <div class="phone-notch"></div>
+                                <div class="phone-screen">
+                                    <div class="phone-status-bar"><span>12:45</span><span>WiFi</span></div>
+                                    <div class="phone-app-header">
+                                        <div style="font-size:1.2rem; color:#0056b3;">Convert</div>
+                                        <div class="phone-menu"></div>
+                                    </div>
+                                    <div class="phone-body">
+                                        <div class="ui-card">
+                                            <div class="ui-label">Weight</div>
+                                            <div class="ui-input" style="width:50%; display:flex; align-items:center; padding-left:10px; font-weight:700;">1.2</div>
+                                            <div style="font-size:0.7rem; color:#999; margin-top:2px;">Pounds (lb)</div>
+                                        </div>
+                                        <div class="ui-card" style="margin-top:15px; text-align:center; padding:25px 0;">
+                                            <div class="ui-result">0.54</div>
+                                            <div class="ui-label">Kilograms (kg)</div>
+                                        </div>
+                                        <div style="flex:1;"></div> <!-- Spacer -->
+                                        <div style="display:flex; justify-content:center;">
+                                            <div style="width:40px; height:4px; background:#ddd; border-radius:2px;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="phone-fab">➜</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- IOS SUB-PAGE (ADVANCED) -->
+        <section id="app-ios">
+            <div class="sub-page-hero" style="background: linear-gradient(135deg, #1c1c1e 0%, #000000 100%);">
+                <div class="blob-bg" style="top: -20%; right: -10%; width: 400px; height: 400px; background: #0056b3; filter: blur(100px);"></div>
+                <h1>Designed for Apple Ecosystem</h1>
+                <p>Seamless integration with iOS, WatchOS, and macOS using native technologies.</p>
+                <!-- App Store Button REMOVED -->
+            </div>
+
+            <div class="feature-grid-advanced">
+                <div class="feature-card-advanced">
+                    <div class="feature-icon-wrapper">🌙</div>
+                    <h3 class="feature-title">Native Dark Mode</h3>
+                    <p class="feature-desc">Supports system-wide dark mode automatically. The interface adapts instantly to your preferences for eye comfort at night.</p>
+                </div>
+                <div class="feature-card-advanced">
+                    <div class="feature-icon-wrapper">📡</div>
+                    <h3 class="feature-title">Offline Access</h3>
+                    <p class="feature-desc">Full functionality even without an internet connection. All metric factors are stored locally on your device.</p>
+                </div>
+                <div class="feature-card-advanced">
+                    <div class="feature-icon-wrapper">📜</div>
+                    <h3 class="feature-title">Smart History</h3>
+                    <p class="feature-desc">Conversions are saved automatically and synchronized via iCloud across all your Apple devices instantly.</p>
+                </div>
+                <div class="feature-card-advanced">
+                    <div class="feature-icon-wrapper">📲</div>
+                    <h3 class="feature-title">Home Screen Widgets</h3>
+                    <p class="feature-desc">Lock screen and home screen widgets allow you to convert directly from your notification center.</p>
+                </div>
+                 <div class="feature-card-advanced">
+                    <div class="feature-icon-wrapper">⌚</div>
+                    <h3 class="feature-title">Apple Watch App</h3>
+                    <p class="feature-desc">A dedicated companion app for your Apple Watch. Quick conversions right from your wrist.</p>
+                </div>
+                <div class="feature-card-advanced">
+                    <div class="feature-icon-wrapper">👆</div>
+                    <h3 class="feature-title">Haptic Feedback</h3>
+                    <p class="feature-desc">Subtle vibrations provide tactile confirmation when you copy results or switch units.</p>
+                </div>
+            </div>
+
+            <div style="text-align:center;">
+                 <button onclick="navigateTo('apps')" style="padding: 12px 30px; border-radius: 50px; cursor: pointer; font-weight: 700; background: white; color: #333; border: 1px solid #ddd; transition: all 0.3s;">&larr; Back to Apps Hub</button>
+            </div>
+        </section>
+
+        <!-- ANDROID SUB-PAGE (ADVANCED) -->
+        <section id="app-android">
+            <div class="sub-page-hero" style="background: linear-gradient(135deg, #0056b3 0%, #00a8e8 100%);">
+                 <div class="blob-bg" style="bottom: -20%; left: -10%; width: 500px; height: 500px; background: #00a8e8; filter: blur(80px);"></div>
+                 <h1>Material Design You</h1>
+                 <p>Engineered with Android 12+ Dynamic Colors and Material You principles for a personalized experience.</p>
+                 <div class="store-buttons">
+                    <!-- FIXED: href="#" to href="javascript:void(0)" -->
+                    <a href="javascript:void(0)" class="store-btn" onclick="triggerDownload('android')">
+                        <svg width="24" height="24" viewBox="0 0 512 512" fill="white"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM479 114.2L217.2 194.3 322 299.1 157-184.9zM322 364.6l-60.1 60.1 200.8 116.2-140.7-176.3zM46.1 25.4l43.9 25.4c-16.6 12.9-40.8 13-58.7.6L36.7 40.9c-2.5 2.6-6.8 1.8-9.3-1.1L25.4 31.1c-2.3-2.6-2.3-6.6-.1-9.2L46.1 25.4zM425.6 416l50.8 29.3c9.3 5.4 21.3 2.2 27-6.8l-10-17.3L401 386.1l-20.8 34.2c-2.8 4.6-8.7 5.9-13.2 2.8l-18.9-8.4-22.8 34.1c-4.3 6.5-12.8 8.8-19.9 6.4l-8.6-3.2c-3.9 3.2-9.1 4.2-13.9 2.6l-6.6-2.1c-5 2.8-10.6 4.3-16.6 4.3-13 0-25.3-3.2-36.3-8.9l-6.2 3.8c-4.1-1.8 7.1-5.3 8-9.7l1.2-18.2c.2-3.4-1.9-6.6-5-8.1l-6.2-2.4c-6 4.7-13.4 7.1-21.3 7.1-18.2 0-34.9-5.8-50-16.6l-5.9 3.9c-4.9 3.2-11.4 2.6-15.6-1.5l-25.5-19.2c-3-2.2-3.7-6.6-1.5-9.7l12.7-29c2.2-5.1 7.2-8.5 12.7-8.8l6.1-.4c4.2-1.6 7.3-5 8.2-9.6l1.6-17.6c.2-3.3-2-6.5-5.2-7.9l-6-2.1c-6.1 5.1-13.5 7.6-21.5 7.6-16.8 0-31.8-5-44.8-14.1l-5.9 3.9c-4.9 3.2-11.4 2.6-15.6-1.5l-25.5-19.2c-3-2.2-3.8-6.5-1.7-9.6l12.6-28.5c2.1-4.7 6.8-7.9 12.1-8.1l5.9-.4c4.2-1.6 7.3-5 8.2-9.6l1.6-17.6c.2-3.3-2-6.5-5.2-7.9l-6-2.1c-6.1 5.1-13.5 7.6-21.5 7.6-16.8 0-31.8-5-44.8-14.1l-5.9 3.9c-4.9 3.2-11.4 2.6-15.6-1.5l-25.5-19.2c-3-2.2-3.8-6.5-1.7-9.6l12.6-28.5c2.1-4.7 6.8-7.9 12.1-8.1l5.9-.4c4.2-1.6 7.3-5 8.2-9.6l1.6-17.6c.2-3.3-2-6.5-5.2-7.9l-6-2.1c-6.1 5.1-13.5 7.6-21.5 7.6-16.8 0-31.8-5-44.8-14.1l-5.9 3.9c-4.9 3.2-11.4 2.6-15.6-1.5l-25.5-19.2c-3-2.2-3.8-6.5-1.7-9.6l12.6-28.5c2.1-4.7 6.8-7.9 12.1-8.1l5.9-.4c4.2-1.6 7.3-5 8.2-9.6l1.6-17.6c.2-3.3-2-6.5-5.2-7.9l-6-2.1c-6.1 5.1-13.5 7.6-21.5 7.6-16.8 0-31.8-5-44.8-14.1l-5.9 3.9c-4.9 3.2-11.4 2.6-15.6-1.5l-25.5-19.2c-3-2.2-3.8-6.5-1.7-9.6l12.6-28.5c2.1-4.7 6.8-7.9 12.1-8.1l5.9-.4c4.2-1.6 7.3-5 8.2-9.6l1.6-17.6c.2-3.3-2-6.5-5.2-7.9l-6-2.1c-6.1 5.1-13.5 7.6-21.5 7.6-16.8 0-31.8-5-44.8-14.1l-5.9 3.9c-4.9 3.2-11.4 2.6-15.6-1.5l-25.5-19.2c-3-2.2-3.8-6.5-1.7-9.6l12.6-28.5c2.1-4.7 6.8-7.9 12.1-8.1l5.9-.4c4.2-1.6 7.3-5 8.2-9.6l1.6-17.6c.2-3.3-2-6.5-5.2-7.9l-6-2.1c-6.1 5.1-13.5 7.6-21.5 7.6-16.8 0-31.8-5-44.8-14.1l-5.9 3.9c-4.9 3.2-11.4 2.6-15.6-1.5l-25.5-19.2c-3-2.2-3.8-6.5-1.7-9.6l12.6-28.5c2.1-4.7 6.8-7.9 12.1-8.1l5.9-.4c4.2-1.6 7.3-5 8.2-9.6l1.6-17.6c.2-3.3-2-6.5-5.2-7.9l-6-2.1c-6.1 5.1-13.5 7.6-21.5 7.6-16.8 0-31.8-5-44.8-14.1l-5.9 3.9c-4.9 3.2-11.4 2.6-15.6-1.5l-25.5-19.2c-3-2.2-3.8-6.5-1.7-9.6l12.6-28.5c2.1-4.7 6.8-7.9 12.1-8.1l5.9-.4c4.2-1.6 7.3-5 8.2-9.6l1.6-17.6c.2-3.3-2-6.5-5.2-7.9l-6-2.1c-6.1 5.1-13.5 7.6-21.5 7.6-16.8 0-31.8-5-44.8-14.1l-5.9 3.9c-4.9 3.2-11.4 2.6-15.6-1.5l-25.5-19.2c-3-2.2-3.8-6.5-1.7-9.6l12.6-28.5c2.1-4.7 6.8-7.9 12.1-8.1l5.9-.4c4.2-1.6 7.3-5 8.2-9.6l1.6-17.6c.2-3.3-2-6.5-5.2-7.9l-6-2.1c-6.1 5.1-13.5 7.6-21.5 7.6-16.8 0-31.8-5-44.8-14.1l-5.9 3.9c-4.9 3.2-11.4 2.6-15.6-1.5l-25.5-19.2c-3-2.2-3.8-6.5-1.7-9.6l12.6-28.5c2.1-4.7 6.8-7.9 12.1-8.1l5.9-.4c4.2-1.6 7.3-5 8.2-9.6l1.6-17.6c.2-3.3-2-6.5-5.2-7.9l-6-2.1c-6.1 5.1-13.5 7.6-21.5 7.6-16.8 0-31.8-5-44.8-14.1l-5.9 3.9c-4.9 3.2-11.4 2.6-15.6-1.5l-25.5-19.2c-3-2.2-3.8-6.5-1.7-9.6l12.6-28.5c2.1-4.7 6.8-7.9 12.1-8.1l5.9-.4c4.2-1.6 7.3-5 8.2-9.6l1.6-17.6c.2-3.3-2-6.5-5.2-7.9l-6-2.1c-6.1 5.1-13.5 7.6-21.5 7.6-16.8 0-31.8-5-44.8-14.1l-5.9 3.9c-4.9 3.2-11.4 2.6-15.6-1.5l-25.5-19.2c-3-2.2-3.8-6.5-1.7-9.6l12.6-28.5c2.1-4.7 6.8-7.9 12.1-8.1l5.9-.4c4.2-1.6 7.3-5 8.2-9.6l1.6-17.6c.2-3.3-2-6.5-5.2-7.9l-6-2.1c-6.1 5.1-13.5 7.6-21.5 7.6-16.8 0-31.8-5-44.8-14.1l-5.9 3.9c-4.9 3.2-11.4 2.6-15.6-1.5l-25.5-19.2c-3-2.2-3.8-6.5-1.7-9.6l12.6-28.5c2.1-4.7 6.8-7.9 12.1-8.1l5.9-.4c4.2-1.6 7.3-5 8.2-9.6l1.6-17.6c.2-3.3-2-6.5-5.2-7.9l-6-2.1c-6.1 5.1-13.5 7.6-21.5 7.6-16.4 0-30.8-4.9-43-13.2z"/></svg>
+                        Google Play
+                    </a>
+                </div>
+            </div>
+             <div class="feature-grid-advanced">
+                <div class="feature-card-advanced">
+                    <div class="feature-icon-wrapper">🎤</div>
+                    <h3 class="feature-title">Voice Input</h3>
+                    <p class="feature-desc">Utilizes Google's advanced speech recognition to input numbers hands-free while driving or cooking.</p>
+                </div>
+                <div class="feature-card-advanced">
+                    <div class="feature-icon-wrapper">⭐</div>
+                    <h3 class="feature-title">Smart Favorites</h3>
+                    <p class="feature-desc">Pin your most used conversions to top of list for instant access. Reorder as needed.</p>
+                </div>
+                <div class="feature-card-advanced">
+                    <div class="feature-icon-wrapper">🔄</div>
+                    <h3 class="feature-title">Auto Currency Rates</h3>
+                    <p class="feature-desc">Updates exchange rates every hour in background using minimal data and battery.</p>
+                </div>
+                <div class="feature-card-advanced">
+                    <div class="feature-icon-wrapper">⚙️</div>
+                    <h3 class="feature-title">Scientific Precision</h3>
+                    <p class="feature-desc">Toggle High Precision mode for engineering work requiring up to 10 decimal places.</p>
+                </div>
+                <div class="feature-card-advanced">
+                    <div class="feature-icon-wrapper">⌚</div>
+                    <h3 class="feature-title">Wear OS Support</h3>
+                    <p class="feature-desc">Fully functional tile for Wear OS smartwatches with complication support.</p>
+                </div>
+                <div class="feature-card-advanced">
+                    <div class="feature-icon-wrapper">📱</div>
+                    <h3 class="feature-title">Tablet Optimized</h3>
+                    <p class="feature-desc">Two-pane layout designed for large screens like Pixel Tablets and Samsung Galaxy Tab.</p>
+                </div>
+             </div>
+             <div style="text-align:center;">
+                 <button onclick="navigateTo('apps')" style="padding: 12px 30px; border-radius: 50px; cursor: pointer; font-weight: 700; background: white; color: #333; border: 1px solid #ddd; transition: all 0.3s;">&larr; Back to Apps Hub</button>
+            </div>
+        </section>
+
+        <!-- CHARTS SECTION (STANDALONE PAGE) -->
+        <section id="chart">
+            <!-- Added a Hero Header to match to rest of site design -->
+            <div class="sub-page-hero" style="background: var(--c-charts);">
+                <div class="blob-bg" style="top: -20%; right: -10%; width: 400px; height: 400px; background: #fff; filter: blur(80px); opacity: 0.2;"></div>
+                <h1>Metric Reference Tables</h1>
+                <p>Explore standard conversion factors, formulas, and reference data for scientific and engineering use.</p>
+            </div>
+
+            <div class="charts-container">
+                <div class="chart-search-wrapper">
+                    <span class="chart-search-icon">🔍</span>
+                    <input type="text" id="chart-search" class="chart-search-input" placeholder="Search for units..." onkeyup="filterCharts()">
+                </div>
+                <div class="charts-grid" id="charts-container"></div>
+            </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <section id="faq">
+             <div style="text-align:center; padding:5rem 2rem; border-radius:24px; background:var(--c-faq-hero); position:relative; overflow:hidden; margin-bottom:3rem; color:white; box-shadow:0 20px 50px rgba(0,0,0,0.2);">
+                <h1 style="color:white; position:relative; z-index:2; font-size:2.5rem; text-shadow:0 4px 10px rgba(0,0,0,0.2);">Frequently Asked Questions</h1>
+                <p style="position:relative; z-index:2; max-width:600px; margin:0 auto; opacity:0.9;">Find answers to common questions.</p>
+            </div>
+            <!-- CHANGED: Increased max-width to 1400px and changed display to grid to cover left/right sides -->
+            <div style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 1.5rem;" id="faq-list">
+                 
+                 <!-- FAQ 1 -->
+                 <div class="faq-card">
+                    <div class="faq-header" onclick="toggleFaq(this)">
+                         <div class="faq-icon">🎯</div>
+                         <div style="flex:1;"><h3 style="font-size:1.15rem; font-weight:700; color:#2c3e50; margin:0; background:-webkit-linear-gradient(45deg, #2c3e50, #576574); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">How accurate are conversion results?</h3></div>
+                         <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-body">
+                        <p>Our tools use standard international definitions for conversions (e.g., 1 inch = 2.54 cm exactly). For currency, we use live market rates updated hourly. Scientific conversions are precise up to decimal places displayed.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-card">
+                    <div class="faq-header" onclick="toggleFaq(this)">
+                         <div class="faq-icon">📶</div>
+                         <div style="flex:1;"><h3 style="font-size:1.15rem; font-weight:700; color:#2c3e50; margin:0; background:-webkit-linear-gradient(45deg, #2c3e50, #576574); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Do I need an internet connection to use website?</h3></div>
+                         <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-body">
+                        <p>No! Once the page is loaded, all metric and standard unit conversions happen locally in your browser using JavaScript. You do not need an active internet connection for calculations, only for fetching live currency rates initially.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-card">
+                    <div class="faq-header" onclick="toggleFaq(this)">
+                         <div class="faq-icon">⚓</div>
+                         <div style="flex:1;"><h3 style="font-size:1.15rem; font-weight:700; color:#2c3e50; margin:0; background:-webkit-linear-gradient(45deg, #2c3e50, #576574); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">What is a knot? What is a nautical mile?</h3></div>
+                         <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-body">
+                        <p>A <strong>knot</strong> is one nautical mile per hour. One nautical mile is defined as exactly 1,852 meters. It is primarily used for air and marine navigation.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-card">
+                    <div class="faq-header" onclick="toggleFaq(this)">
+                         <div class="faq-icon">💰</div>
+                         <div style="flex:1;"><h3 style="font-size:1.15rem; font-weight:700; color:#2c3e50; margin:0; background:-webkit-linear-gradient(45deg, #2c3e50, #576574); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">How often are currency exchange rates updated?</h3></div>
+                         <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-body">
+                        <p>Our currency exchange rates are sourced from major financial markets and are updated automatically every hour to ensure you get the most current conversion possible.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="faq-card">
+                    <div class="faq-header" onclick="toggleFaq(this)">
+                         <div class="faq-icon">📱</div>
+                         <div style="flex:1;"><h3 style="font-size:1.15rem; font-weight:700; color:#2c3e50; margin:0; background:-webkit-linear-gradient(45deg, #2c3e50, #576574); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Can I use this website on my mobile phone?</h3></div>
+                         <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-body">
+                        <p>Yes! The website is fully responsive and optimized for smartphones and tablets. We also offer dedicated native apps for both iOS and Android for a smoother offline experience.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="faq-card">
+                    <div class="faq-header" onclick="toggleFaq(this)">
+                         <div class="faq-icon">🔐</div>
+                         <div style="flex:1;"><h3 style="font-size:1.15rem; font-weight:700; color:#2c3e50; margin:0; background:-webkit-linear-gradient(45deg, #2c3e50, #576574); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Is my data private?</h3></div>
+                         <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-body">
+                        <p>Absolutely. All conversions are performed locally in your browser. We do not store, track, or transmit the numbers you input to any external servers. Your privacy is our priority.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 7 -->
+                <div class="faq-card">
+                    <div class="faq-header" onclick="toggleFaq(this)">
+                         <div class="faq-icon">🌡️</div>
+                         <div style="flex:1;"><h3 style="font-size:1.15rem; font-weight:700; color:#2c3e50; margin:0; background:-webkit-linear-gradient(45deg, #2c3e50, #576574); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">How do I convert Celsius to Fahrenheit manually?</h3></div>
+                         <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-body">
+                        <p>The formula is: <strong>(°C × 9/5) + 32 = °F</strong>. To convert from Fahrenheit to Celsius, subtract 32 and multiply by 5/9: <strong>(°F - 32) × 5/9 = °C</strong>.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 8 -->
+                <div class="faq-card">
+                    <div class="faq-header" onclick="toggleFaq(this)">
+                         <div class="faq-icon">⚖️</div>
+                         <div style="flex:1;"><h3 style="font-size:1.15rem; font-weight:700; color:#2c3e50; margin:0; background:-webkit-linear-gradient(45deg, #2c3e50, #576574); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Is the mobile app free?</h3></div>
+                         <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-body">
+                        <p>Yes! Our mobile applications for both iOS and Android are free to download and use. We offer a premium ad-free version for users who want to support development.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 9 -->
+                <div class="faq-card">
+                    <div class="faq-header" onclick="toggleFaq(this)">
+                         <div class="faq-icon">🖨️</div>
+                         <div style="flex:1;"><h3 style="font-size:1.15rem; font-weight:700; color:#2c3e50; margin:0; background:-webkit-linear-gradient(45deg, #2c3e50, #576574); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Can I print conversion tables?</h3></div>
+                         <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-body">
+                        <p>Yes. You can use your browser's "Print" function (Ctrl+P or Cmd+P) to print any of our conversion tables or charts directly to PDF or paper for offline reference.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 10 -->
+                <div class="faq-card">
+                    <div class="faq-header" onclick="toggleFaq(this)">
+                         <div class="faq-icon">🛠️</div>
+                         <div style="flex:1;"><h3 style="font-size:1.15rem; font-weight:700; color:#2c3e50; margin:0; background:-webkit-linear-gradient(45deg, #2c3e50, #576574); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">How do I report a bug or request a feature?</h3></div>
+                         <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-body">
+                        <p>We love feedback! You can contact our support team directly through the "Contact Support" link in the footer, or message us on our social media channels found below.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-wave"></div>
+        <div class="footer-container">
+            
+            <!-- Column 1 -->
+            <div class="footer-col">
+                <!-- FIXED: Added Logo Image -->
+                <div class="footer-logo">
+                    <img src="https://z-cdn-media.chatglm.cn/files/5777c6eb-31ae-4b9a-9c15-1ad1d967fa33.png?auth_key=1869597055-2a347d3427ec456380e1447e542770e1-0-e0cd906cdf6bce63f97f7058949c67da" alt="Metric Conversion Icon" class="logo-icon">
+                    Metric Converters
+                </div>
+                <p class="footer-desc">
+                    The most professional and accurate metric conversion tools on the web. Built for students, engineers, and scientists worldwide.
+                </p>
+            </div>
+
+            <!-- Column 2: Converters -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Converters</h4>
+                <ul class="footer-links">
+                    <li><a onclick="setConverterType('Temperature'); navigateTo('converter')">Temperature</a></li>
+                    <li><a onclick="setConverterType('Length'); navigateTo('converter')">Length & Distance</a></li>
+                    <li><a onclick="setConverterType('Mass'); navigateTo('converter')">Weight & Mass</a></li>
+                    <li><a onclick="setConverterType('Volume'); navigateTo('converter')">Volume & Capacity</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Resources -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Resources</h4>
+                <ul class="footer-links">
+                    <li><a onclick="navigateTo('chart')">Metric Tables</a></li>
+                    <li><a onclick="navigateTo('apps')">Mobile Apps</a></li>
+                    <li><a onclick="navigateTo('faq')">Help & FAQ</a></li>
+                    <!-- FIXED: href="#" to href="javascript:void(0)" -->
+                    <li><a href="javascript:void(0)">Contact Support</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Connect (SOCIAL ICONS REMOVED) -->
+            <div class="footer-col">
+                <!-- FIXED: Added Logo Image -->
+                <div class="footer-logo">
+                    <img src="https://z-cdn-media.chatglm.cn/files/5777c6eb-31ae-4b9a-9c15-1ad1d967fa33.png?auth_key=1869597055-2a347d3427ec456380e1447e542770e1-0-e0cd906cdf6bce63f97f7058949c67da" alt="Metric Conversion Icon" class="logo-icon">
+                    Metric Converters
+                </div>
+                
+                <h4 class="footer-heading">Connect</h4>
+                <p class="footer-desc" style="margin-bottom:1rem;">Stay updated with our latest tools.</p>
+                <!-- Social links removed here -->
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Metric Converters. All rights reserved.</p>
+            <p style="font-size:0.8rem; margin-top:5px;">Designed with blue gradients & precision.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div id="back-to-top" onclick="scrollToTop()">↑</div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast">Download started...</div>
+
+   <script src="script.js"></script>
+</body>
+</html>

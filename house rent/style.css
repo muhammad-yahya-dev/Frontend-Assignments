@@ -1,0 +1,8 @@
+ @font-face {
+            font-family: 'Figtree';
+            font-style: normal;
+            font-optical-sizing: auto;
+            src: local('Figtree'), url('/assets/fonts/Figtree-VariableFont_wght.woff2') format('woff2');
+            font-display: swap;
+        }
+        body { font-family: 'Figtree', sans-serif; }
